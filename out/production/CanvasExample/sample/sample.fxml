@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <left>
+      <VBox prefWidth="275.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Objects" />
+            <TableView fx:id="tableView" onInputMethodTextChanged="#canvasChanged">
+              <columns>
+                <TableColumn fx:id="col_object" prefWidth="75.0" text="Object">
+                   <cellValueFactory>
+                      <PropertyValueFactory property="object" />
+                   </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="col_x" prefWidth="50.0" text="x">
+                   <cellValueFactory>
+                      <PropertyValueFactory property="x" />
+                   </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="col_y" prefWidth="50.0" text="y">
+                   <cellValueFactory>
+                      <PropertyValueFactory property="y" />
+                   </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="col_height" prefWidth="50.0" text="height">
+                   <cellValueFactory>
+                      <PropertyValueFactory property="height" />
+                   </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="col_width" prefWidth="50.0" text="width">
+                   <cellValueFactory>
+                      <PropertyValueFactory property="width" />
+                   </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefWidth="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Tools" />
+            <Button fx:id="btnCircleStroke" mnemonicParsing="false" onAction="#selectCircleStroke" prefHeight="50.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/circleStroke.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnCircleFill" mnemonicParsing="false" onAction="#selectCircleFill" prefHeight="50.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/circleFilled.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnRectStroke" mnemonicParsing="false" onAction="#selectRectStroke" prefHeight="50.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/rectStroke.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnRectFill" mnemonicParsing="false" onAction="#selectRectFill" prefHeight="50.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/rectFilled.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <ColorPicker fx:id="colorPicker" onAction="#setSelectedColorColor" />
+            <Label text="Height:" />
+            <TextField fx:id="heightValue" />
+            <Label text="Width:" />
+            <TextField fx:id="widthValue" />
+            
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <Canvas fx:id="canvas" height="400" onMouseClicked="#canvasMouseClicked" onMouseMoved="#mouseOverCanvas" width="500" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <FlowPane BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="labelPointerPos" text="Label" />
+         </children>
+      </FlowPane>
+   </bottom>
+</BorderPane>
